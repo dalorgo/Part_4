@@ -1,0 +1,4 @@
+SELECT
+	AVG(CAST(SUBSTRING(p.Height, 1, LOCATE('lbs', p.Height)-1) AS DECIMAL(10,1))) AVG_WEIGHT
+FROM
+	Pokemon p
