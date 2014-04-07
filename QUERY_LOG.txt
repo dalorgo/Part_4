@@ -11,19 +11,36 @@ INSERT 1:
 
 QUERY:
 
+mysql> INSERT INTO Pokemon(GUID,Name,NationalID,Height,Weight,HP,Attack,Defense,SpecialAtk,SpecialDef,Speed,Description) VALUES('12345678-1234-1234-1234-abc123456789','Treecko',252,'2.04','11',40,45,35,65,55,70,'Treecko is a small, green, bipedal reptilian Pokémon. It has yellow eyes with long, narrow pupils. Treeckos hands and feet each have three digits covered with tiny spikes');
+Query OK, 1 row affected (0.03 sec)
 
 RESULTS:
 
-
+mysql> SELECT GUID FROM Pokemon WHERE name = 'Treecko';
++--------------------------------------+
+| GUID                                 |
++--------------------------------------+
+| 12345678-1234-1234-1234-abc123456789 |
++--------------------------------------+
+1 row in set (0.00 sec)
 
 INSERT 2:
 
 QUERY:
 
+mysql> INSERT INTO Pokemon(GUID,Name,NationalID,Height,Weight,HP,Attack,Defense,SpecialAtk,SpecialDef,Speed,Description) VALUES('87654321-1234-1234-1234-abc123456789','Mudkip',258,'1.04','16.8',50,70,50,50,50,40,'Mudkip is a small amphibious quadruped Pokémon.');
+Query OK, 1 row affected (0.00 sec)
+
 
 RESULTS:
 
-
+mysql> SELECT GUID FROM Pokemon WHERE name = 'Mudkip';
++--------------------------------------+
+| GUID                                 |
++--------------------------------------+
+| 87654321-1234-1234-1234-abc123456789 |
++--------------------------------------+
+1 row in set (0.00 sec)
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -32,21 +49,25 @@ DELETE 1:
 
 QUERY:
 
-
+mysql> DELETE FROM Pokemon WHERE Name = 'Treecko';
+Query OK, 1 row affected (0.00 sec)
 
 RESULTS:
 
-
+mysql> SELECT * FROM Pokemon WHERE Name = 'Treecko';
+Empty set (0.00 sec)
 
 DELETE 2:
 
 QUERY:
 
-
+mysql> DELETE FROM Pokemon WHERE Name = 'Mudkip';
+Query OK, 1 row affected (0.01 sec)
 
 RESULTS:
 
-
+mysql> SELECT * FROM Pokemon WHERE Name = 'Mudkip';
+Empty set (0.00 sec)
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -55,7 +76,31 @@ DISTINCT QUERY:
 
 QUERY AND RESULT:
 
+mysql> source /Users/rileypruitt/Part_4/Queries/ATTACK_AND_DEFENSE.sql+------------+--------+---------+| Name       | Attack | Defense |
++------------+--------+---------+
+| Venusaur   |     82 |      83 |
+| Charizard  |     84 |      78 |
+| Blastoise  |     83 |     100 |
+| Raticate   |     81 |      60 |
+| Fearow     |     90 |      65 |
+| Arbok      |     85 |      69 |
+| Raichu     |     90 |      55 |
+| Sandshrew  |     75 |      85 |
+| Sandslash  |    100 |     110 |
+| Nidoqueen  |     82 |      87 |
+| Nidoking   |     92 |      77 |
+| Vileplume  |     80 |      85 |
+| Parasect   |     95 |      80 |
+| Golduck    |     82 |      78 |
+| Primeape   |    105 |      60 |
+| Arcanine   |    110 |      80 |
+| Poliwrath  |     85 |      95 |
+| Machoke    |    100 |      70 |
+…
+…
+…
 
+113 rows in set (0.00 sec)
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -64,15 +109,51 @@ GEN QUERY WITH >= 2 CONDITIONS
 
 QUERY AND RESULT:
 
+mysql> source /Users/rileypruitt/Part_4/Queries/FIRST_151_POKEMON_FIRE.sql+--------------------------------------+------------+------------+------+--------+---------+-------+--------+--------+------------+------------+---------------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+------+
+| GUID                                 | NationalID | Name       | HP   | Attack | Defense | Speed | Height | Weight | SpecialDef | SpecialAtk | Description                                                                                             | PokemonUID                           | TypeUID                              | GUID                                 | Name |
++--------------------------------------+------------+------------+------+--------+---------+-------+--------+--------+------------+------------+---------------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+------+
+| e39d5b26-167a-4d77-b0b9-680e4944e683 |          4 | Charmander |   39 |     52 |      43 |    65 |     24 |   18.7 |         50 |         60 | Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.           | e39d5b26-167a-4d77-b0b9-680e4944e683 | 775d524e-d6b5-4c84-af77-1cb3e03d7c8d | 775d524e-d6b5-4c84-af77-1cb3e03d7c8d | Fire |
+| 51e75512-3a92-46c3-985f-08133b4631ee |          5 | Charmeleon |   58 |     64 |      58 |    80 |     43 |   41.9 |         65 |         80 | When it swings its burning tail, it elevates the temperature to unbearably high levels.                 | 51e75512-3a92-46c3-985f-08133b4631ee | 775d524e-d6b5-4c84-af77-1cb3e03d7c8d | 775d524e-d6b5-4c84-af77-1cb3e03d7c8d | Fire |
+| 07ba11e4-4eba-4414-8efc-846685c404ea |          6 | Charizard  |   78 |     84 |      78 |   100 |     67 |  199.5 |         85 |        109 | It spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.         | 07ba11e4-4eba-4414-8efc-846685c404ea | 775d524e-d6b5-4c84-af77-1cb3e03d7c8d | 775d524e-d6b5-4c84-af77-1cb3e03d7c8d | Fire |
+| ffaf2165-71bd-401a-93e5-cbce52ff2683 |         37 | Vulpix     |   38 |     41 |      40 |    65 |     24 |   21.8 |         65 |         50 | At the time of birth, it has just one tail. The tail splits from its tip as it grows older.      
+…
+…
+…
 
+12 rows in set (0.17 sec)
 
 QUERY AND RESULT:
 
+mysql> source /Users/rileypruitt/Part_4/Queries/GEN_2_WATER_POKEMON.sql
++--------------------------------------+------------+------------+------+--------+---------+-------+--------+--------+------------+------------+------------------------------------------------------------------------------------------------------------
++--------------------------------------+--------------------------------------+--------------------------------------+-------+
+| GUID                                 | NationalID | Name       | HP   | Attack | Defense | Speed | Height | Weight | SpecialDef | SpecialAtk | Description                                                                                                | PokemonUID                           | TypeUID                              | GUID                                 | Name  |
++--------------------------------------+------------+------------+------+--------+---------+-------+--------+--------+------------+------------+------------------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+-------+
+| e7ae94ce-bb00-4f24-b7ea-73812fcced94 |        158 | Totodile   |   50 |     65 |      64 |    43 |      0 |   20.9 |         48 |         44 | Its well-developed jaws are powerful and capable of crushing anything. Even its trainer must be careful.   | e7ae94ce-bb00-4f24-b7ea-73812fcced94 | 926e4380-26c2-4c04-86cf-40310b71d391 | 926e4380-26c2-4c04-86cf-40310b71d391 | Water |
+| 89aeec73-d422-471d-bd0e-80d42c7c40a0 |        159 | Croconaw   |   65 |     80 |      80 |    58 |     43 |   55.1 |         63 |         59 | If it loses a fang, a new one grows back in its place. There are always 48 fangs lining its mouth.         | 89aeec73-d422-471d-bd0e-80d42c7c40a0 | 926e4380-26c2-4c04-86cf-40310b71d391 | 926e4380-26c2-4c04-86cf-40310b71d391 | Water |
+| 03491d07-7567-4226-97a3-78dc2fa40625 |        160 | Feraligatr |   85 |    105 |     100 |    78 |     91 |  195.8 |         83 |         79 | When it bites with its massive and powerful jaws, it shakes its head and savagely tears its victim up.     | 03491d07-7567-4226-97a3-78dc2fa40625 | 926e4380-26c2-4c04-86cf-40310b71d391 | 926e4380-26c2-4c04-86cf-40310b71d391 | Water |
+| cfea476a-0695-4c2d-ad4f-7c19cb1ee775 |        170 | Chinchou   |   75 |     38 |      38 |    67 |     20 |   26.5 |         56 |         56 | It shoots positive and negative electricity between the tips of its two antennae and zaps its enemies.     | cfea476a-0695-4c2d-ad4f-7c19cb1ee775 | 926e4380-26c2-4c04-86cf-40310b71d391 | 926e4380-26c2-4c04-86cf-40310b71d391 | Water |
+| 4a152823-1efa-4511-a496-931bee45580e |        171 | Lanturn    |  125 |     58 |      58 |    67 |     47 |   49.6 |         76 |         76 | The light it emits is so bright that it can illuminate the sea's surface from a depth of over three miles. | 4a152823-1efa-4511-a496-931bee45580e | 926e4380-26c2-4c04-86cf-40310b71d391 | 926e4380-26c2-4c04-86cf-40310b71d391 | Water |
+| 0192cee7-968c-493f-92b5-a721f05bc2f2 |        183 | Marill     |   70 |     20 |      50 |    40 |     16 |   18.7 |         50 |         20 | The tip of its tail, which contains oil that is lighter than water, lets it swim without drowning.         | 0192cee7-968c-493f-92b5-a721f05bc2f2 | 926e4380-26c2-4c04-86cf-40310b71d391 | 926e4380-26c2-4c04-86cf-40310b71d391 | Water |
+| 2a1f1aaf-87da-47f6-afad-a1fba7810591 |        184 | Azumarill  |  100 |     50 |      80 |    50 |     31 |   62.8 |         80 |         50 | By keeping still and listening intently, it can tell what is in even wild, fast-moving rivers.             | 2a1f1aaf-87da-47f6-afad-a1fba7810591 | 926e4380-26c2-4c04-86cf-40310b71d391 | 926e4380-26c2-4c04-86cf-40310b71d391 | Water |
+| 143d1f39-d9e3-4b60-b37a-10911a6bc78b |        186 | Politoed   |   90 |     75 |      75 |    70 |     43 |   74.7 |        100 |         90 | If Poliwag and Poliwhirl hear its echoing cry, they respond by gathering from far and wide.                | 143d1f39-d9e3-4b60-b37a-10911a6bc78b | 926e4380-26c2-4c04-86cf-40310b71d391 | 926e4380-26c2-4c04-86cf-40310b71d391 | Water |
+| e6fa755b-21b7-4905-980e-22656e0d4c5d |        194 | Wooper     |   55 |     45 |      45 |    15 |     16 |   18.7 |         25 |         25 | This Pokémon lives in cold water. It will leave the water to search for food when it gets cold outside.
+…
+…
+…
 
+18 rows in set (0.00 sec)
 
 QUERY AND RESULTS:
 
-
+mysql> source /Users/rileypruitt/Part_4/Queries/HEAVIEST_WEIGHT.sql
++---------+--------+
+| Name    | Weight |
++---------+--------+
+| Steelix |    362 |
+| Snorlax |     83 |
++---------+--------+
+2 rows in set (0.00 sec)
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -81,11 +162,79 @@ TWO JOIN QUERIES:
 
 QUERY AND RESULT:
 
+mysql> source /Users/rileypruitt/Part_4/Queries/FIND_TYPE_ADVANTAGE.sql
++------------+
+| Name       |
++------------+
+| Bulbasaur  |
+| Ivysaur    |
+| Venusaur   |
+| Squirtle   |
+| Wartortle  |
+| Blastoise  |
+| Sandshrew  |
+| Sandslash  |
+| Nidoqueen  |
+| Nidoking   |
+| Oddish     |
+| Gloom      |
+| Vileplume  |
+| Paras      |
+| Parasect   |
+| Diglett    |
+| Dugtrio    |
+| Psyduck    |
+| Golduck    |
+| Mankey     |
+| Primeape   |
+| Poliwag    |
+| Poliwhirl  |
+| Poliwrath  |
+| Machop     |
+| Machoke    |
+| Machamp    |
+| Bellsprout |
+| Weepinbell |
+| Victreebel |
+| Tentacool  |
+| Tentacruel |
+…
+…
+…
 
+111 rows in set (0.00 sec)
 
 QUERY AND RESULT:
 
-
+mysql> source /Users/rileypruitt/Part_4/Queries/POKEMON_LEARN_EARTHQUAKE.sql
++------------+
+| Name       |
++------------+
+| Charizard  |
+| Blastoise  |
+| Ekans      |
+| Arbok      |
+| Sandshrew  |
+| Sandslash  |
+| Nidoqueen  |
+| Nidoking   |
+| Diglett    |
+| Dugtrio    |
+| Poliwhirl  |
+| Poliwrath  |
+| Machop     |
+| Machoke    |
+| Machamp    |
+| Geodude    |
+| Graveler   |
+| Golem      |
+| Slowpoke   |
+| Slowbro    |
+| Onix       |
+…
+…
+…
+56 rows in set (0.09 sec)
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -94,7 +243,15 @@ UNION QUERY:
 
 QUERY AND RESULT:
 
-
+mysql> source /Users/rileypruitt/Part_4/Queries/UNION_HEAVIEST_AND_LEAST_HEAVY.sql
++---------+--------+------+
+| Name    | Weight | UNIT |
++---------+--------+------+
+| Snorlax | 1014.1 | lbs  |
+| Haunter |    0.2 | lbs  |
+| Gastly  |    0.2 | lbs  |
++---------+--------+------+
+3 rows in set (0.00 sec)
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -103,7 +260,29 @@ GROUP BY QUERY:
 
 QUERY AND RESULT:
 
-
+mysql> source /Users/rileypruitt/Part_4/Queries/LAST_POKEMON_BY_TYPE.sql
++------------+------------+----------+
+| Name       | NationalId | TypeName |
++------------+------------+----------+
+| Misdreavus |        200 | Ghost    |
+| Qwilfish   |        211 | Poison   |
+| Heracross  |        214 | Bug      |
+| Skarmory   |        227 | Steel    |
+| Kingdra    |        230 | Dragon   |
+| Hitmontop  |        237 | Fighting |
+| Smoochum   |        238 | Ice      |
+| Blissey    |        242 | Normal   |
+| Raikou     |        243 | Electric |
+| Suicune    |        245 | Water    |
+| Pupitar    |        247 | Ground   |
+| Tyranitar  |        248 | Dark     |
+| Tyranitar  |        248 | Rock     |
+| Ho-Oh      |        250 | Fire     |
+| Ho-Oh      |        250 | Flying   |
+| Celebi     |        251 | Grass    |
+| Celebi     |        251 | Psychic  |
++------------+------------+----------+
+17 rows in set (0.00 sec)
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -112,7 +291,35 @@ ORDER BY QUERY:
 
 QUERY AND RESULT:
 
+mysql> source /Users/rileypruitt/Part_4/Queries/ORDER_BY_NATIONAL_ID.sql
++------------+------------+-------------------------------------------------------------------------------------------------------------+
+| NationalId | Name       | Description                                                                                                 |
++------------+------------+-------------------------------------------------------------------------------------------------------------+
+|          1 | Bulbasaur  | A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon.             |
+|          2 | Ivysaur    | When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.            |
+|          3 | Venusaur   | The plant blooms when it is asorbing solar energy. It stays on the move to seek sunlight.                   |
+|          4 | Charmander | Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.               |
+|          5 | Charmeleon | When it swings its burning tail, it elevates the temperature to unbearably high levels.                     |
+|          6 | Charizard  | It spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.             |
+|          7 | Squirtle   | After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.               |
+|          8 | Wartortle  | Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance.        |
+|          9 | Blastoise  | A brutal Pokémon with pressurized water jets on its shell. They are used for high speed tackles.            |
+|         10 | Caterpie   | Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.            |
+|         11 | Metapod    | This Pokémon is vulnerable to attack while its shell is soft, exposing its weak and tender body.            |
+|         12 | Butterfree | In battle, it flaps its wings at high speed, releasing highly toxic dust into the air.                      |
+|         13 | Weedle     | Often found in forests, eating leaves. It has a sharp, venomous stinger on its head.                        |
+|         14 | Kakuna     | Almost incapable of moving, this Pokémon can only harden its shell to protect itself from predators.        |
+|         15 | Beedrill   | Flies at high speed and attacks using its large venomous stingers on its forelegs and tail.                 |
+|         16 | Pidgey     | A common sight in forests and woods. It flaps its wings at ground level to kick up blinding sand.           |
+|         17 | Pidgeotto  | Very protective of its sprawling territory, this Pokémon will fiercely peck at any intruder.                |
+|         18 | Pidgeot    | When hunting, it skims the surface of water at high speed to pick off unwary prey such as Magikarp.         |
+|         19 | Rattata    | Bites anything when it attacks. Small and very quick, it is a common sight in many places.                  |
+|         20 | Raticate   | It uses its whiskers to maintain its balance and will slow down if they are cut off.                        |
+…
+…
+…
 
+249 rows in set (0.00 sec)
 
 ***********************************************************************************************************************
 ***********************************************************************************************************************
@@ -121,7 +328,13 @@ AGGREGATE QUERY:
 
 QUERY AND RESULT:
 
-
+mysql> source /Users/rileypruitt/Part_4/Queries/AVERAGE_WEIGHT.sql
++--------------------+
+| AVG_WEIGHT         |
++--------------------+
+| 104.76746985052962 |
++--------------------+
+1 row in set (0.00 sec)
 
 
 
