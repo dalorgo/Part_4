@@ -1,0 +1,430 @@
+**********************
+**********************
+LARGE DATABASE LOG:
+**********************
+**********************
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+INSERT 1:
+
+QUERY:
+mysql> INSERT INTO Pokemon(GUID,Name,NationalID,Height,Weight,HP,Attack,Defense,SpecialAtk,SpecialDef,Speed,Description) VALUES('12345678-1234-1234-1234-abc123456789','Treecko',252,'2''04"','11lbs',40,45,35,65,55,70,'Treecko is a small, green, bipedal reptilian Pokémon. It has yellow eyes with long, narrow pupils. Treeckos hands and feet each have three digits covered with tiny spikes');
+Query OK, 1 row affected (0.03 sec)
+
+RESULTS:
+
+mysql> SELECT GUID FROM Pokemon WHERE Name = 'Treecko';
++--------------------------------------+
+| GUID                                 |
++--------------------------------------+
+| 12345678-1234-1234-1234-abc123456789 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+INSERT 2:
+
+QUERY:
+INSERT INTO Pokemon(GUID,Name,NationalID,Height,Weight,HP,Attack,Defense,SpecialAtk,SpecialDef,Speed,Description) VALUES('87654321-1234-1234-1234-abc123456789','Mudkip',258,'1''04"','16.8lbs',50,70,50,50,50,40,'Mudkip is a small amphibious quadruped Pokémon.');
+Query OK, 1 row affected (0.00 sec)
+
+RESULTS:
+
+mysql> SELECT GUID FROM Pokemon WHERE Name = 'Mudkip';
++--------------------------------------+
+| GUID                                 |
++--------------------------------------+
+| 87654321-1234-1234-1234-abc123456789 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+DELETE 1:
+
+QUERY:
+
+mysql> DELETE FROM Pokemon WHERE Name = 'Treecko';
+Query OK, 1 row affected (0.00 sec)
+
+RESULTS:
+
+mysql> SELECT GUID FROM Pokemon WHERE Name = 'Treecko';
+Empty set (0.00 sec)
+
+DELETE 2:
+
+QUERY:
+
+mysql> DELETE FROM Pokemon WHERE Name = 'Mudkip';
+Query OK, 1 row affected (0.00 sec)
+
+RESULTS:
+
+mysql> SELECT GUID FROM Pokemon WHERE Name = 'Mudkip';
+Empty set (0.00 sec)
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+DISTINCT QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/ATTACK_AND_DEFENSE.sql
++-----------+--------+---------+
+| Name      | Attack | Defense |
++-----------+--------+---------+
+| Venusaur  |     82 |      83 |
+| Charizard |     84 |      78 |
++-----------+--------+---------+
+2 rows in set (0.00 sec)
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+GEN QUERY WITH >= 2 CONDITIONS
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/FIRST_151_POKEMON_FIRE.sql
++--------------------------------------+------------+------------+------+--------+---------+-------+----------+--------+------------+------------+-------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+------+
+| GUID                                 | NationalID | Name       | HP   | Attack | Defense | Speed | Height   | Weight | SpecialDef | SpecialAtk | Description                                                                                     | PokemonUID                           | TypeUID                              | GUID                                 | Name |
++--------------------------------------+------------+------------+------+--------+---------+-------+----------+--------+------------+------------+-------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+------+
+| 22d794c8-a4c7-49d7-a2ce-756c6220f2e1 |          4 | Charmander |   39 |     52 |      43 |    65 | 18.7lbs  | 2'00"  |         50 |         60 | Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.   | 22d794c8-a4c7-49d7-a2ce-756c6220f2e1 | fc4c6451-36fd-41ff-a453-a153295d9e28 | fc4c6451-36fd-41ff-a453-a153295d9e28 | Fire |
+| 98315c60-5ea3-4460-a60a-6d6c86bb28f1 |          5 | Charmeleon |   58 |     64 |      58 |    80 | 41.9lbs  | 3'07"  |         65 |         80 | When it swings its burning tail, it elevates the temperature to unbearably high levels.         | 98315c60-5ea3-4460-a60a-6d6c86bb28f1 | fc4c6451-36fd-41ff-a453-a153295d9e28 | fc4c6451-36fd-41ff-a453-a153295d9e28 | Fire |
+| e4b57b20-4560-45de-82dc-9a8e09799c40 |          6 | Charizard  |   78 |     84 |      78 |   100 | 199.5lbs | 5'07"  |         85 |        109 | It spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally. | e4b57b20-4560-45de-82dc-9a8e09799c40 | fc4c6451-36fd-41ff-a453-a153295d9e28 | fc4c6451-36fd-41ff-a453-a153295d9e28 | Fire |
++--------------------------------------+------------+------------+------+--------+---------+-------+----------+--------+------------+------------+-------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+------+
+3 rows in set (0.00 sec)
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/GEN_2_WATER_POKEMON.sql
+Empty set (0.00 sec)
+
+QUERY AND RESULTS:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/HEAVIEST_WEIGHT.sql
++----------+----------+
+| Name     | Weight   |
++----------+----------+
+| Venusaur | 220.5lbs |
++----------+----------+
+1 row in set (0.03 sec)
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+TWO JOIN QUERIES:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/FIND_TYPE_ADVANTAGE.sql
+Empty set (0.00 sec)
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/POKEMON_LEARN_EARTHQUAKE.sql
+Empty set (0.00 sec)
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+UNION QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/UNION_HEAVIEST_AND_LEAST_HEAVY.sql
++----------+--------+------+
+| Name     | Weight | UNIT |
++----------+--------+------+
+| Venusaur | 6'07"  | lbs  |
+| Caterpie | 1'00"  | lbs  |
++----------+--------+------+
+2 rows in set (0.02 sec)
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+GROUP BY QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/LAST_POKEMON_BY_TYPE.sql
++-----------+------------+----------+
+| Name      | NationalId | TypeName |
++-----------+------------+----------+
+| Venusaur  |          3 | Grass    |
+| Venusaur  |          3 | Poison   |
+| Charizard |          6 | Fire     |
+| Charizard |          6 | Flying   |
++-----------+------------+----------+
+4 rows in set (0.02 sec)
+
+mysql> 
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+ORDER BY QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/ORDER_BY_NATIONAL_ID.sql
++------------+------------+------------------------------------------------------------------------------------------------------+
+| NationalId | Name       | Description                                                                                          |
++------------+------------+------------------------------------------------------------------------------------------------------+
+|          1 | Bulbasaur  | A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon.      |
+|          3 | Venusaur   | The plant blooms when it is asorbing solar energy. It stays on the move to seek sunlight.            |
+|          4 | Charmander | Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.        |
+|          5 | Charmeleon | When it swings its burning tail, it elevates the temperature to unbearably high levels.              |
+|          6 | Charizard  | It spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.      |
+|          7 | Squirtle   | After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.        |
+|          8 | Wartortle  | Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance. |
+|          9 | Blastoise  | A brutal Pokémon with pressurized water jets on its shell. They are used for high speed tackles.     |
+|         10 | Caterpie   | Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.     |
++------------+------------+------------------------------------------------------------------------------------------------------+
+9 rows in set (0.00 sec)
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+AGGREGATE QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/AVERAGE_WEIGHT.sql
++-------------------+
+| AVG_WEIGHT        |
++-------------------+
+| 3.111111111111111 |
++-------------------+
+1 row in set, 9 warnings (0.00 sec)
+
+
+
+
+
+
+**********************
+**********************
+SMALL DATABASE LOG:
+**********************
+**********************
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+INSERT 1:
+
+QUERY:
+mysql> INSERT INTO Pokemon(GUID,Name,NationalID,Height,Weight,HP,Attack,Defense,SpecialAtk,SpecialDef,Speed,Description) VALUES('12345678-1234-1234-1234-abc123456789','Treecko',252,'2''04"','11lbs',40,45,35,65,55,70,'Treecko is a small, green, bipedal reptilian Pokémon. It has yellow eyes with long, narrow pupils. Treeckos hands and feet each have three digits covered with tiny spikes');
+Query OK, 1 row affected (0.03 sec)
+
+RESULTS:
+
+mysql> SELECT GUID FROM Pokemon WHERE Name = 'Treecko';
++--------------------------------------+
+| GUID                                 |
++--------------------------------------+
+| 12345678-1234-1234-1234-abc123456789 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+INSERT 2:
+
+QUERY:
+INSERT INTO Pokemon(GUID,Name,NationalID,Height,Weight,HP,Attack,Defense,SpecialAtk,SpecialDef,Speed,Description) VALUES('87654321-1234-1234-1234-abc123456789','Mudkip',258,'1''04"','16.8lbs',50,70,50,50,50,40,'Mudkip is a small amphibious quadruped Pokémon.');
+Query OK, 1 row affected (0.00 sec)
+
+RESULTS:
+
+mysql> SELECT GUID FROM Pokemon WHERE Name = 'Mudkip';
++--------------------------------------+
+| GUID                                 |
++--------------------------------------+
+| 87654321-1234-1234-1234-abc123456789 |
++--------------------------------------+
+1 row in set (0.00 sec)
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+DELETE 1:
+
+QUERY:
+
+mysql> DELETE FROM Pokemon WHERE Name = 'Treecko';
+Query OK, 1 row affected (0.00 sec)
+
+RESULTS:
+
+mysql> SELECT GUID FROM Pokemon WHERE Name = 'Treecko';
+Empty set (0.00 sec)
+
+DELETE 2:
+
+QUERY:
+
+mysql> DELETE FROM Pokemon WHERE Name = 'Mudkip';
+Query OK, 1 row affected (0.00 sec)
+
+RESULTS:
+
+mysql> SELECT GUID FROM Pokemon WHERE Name = 'Mudkip';
+Empty set (0.00 sec)
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+DISTINCT QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/ATTACK_AND_DEFENSE.sql
++-----------+--------+---------+
+| Name      | Attack | Defense |
++-----------+--------+---------+
+| Venusaur  |     82 |      83 |
+| Charizard |     84 |      78 |
++-----------+--------+---------+
+2 rows in set (0.00 sec)
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+GEN QUERY WITH >= 2 CONDITIONS
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/FIRST_151_POKEMON_FIRE.sql
++--------------------------------------+------------+------------+------+--------+---------+-------+----------+--------+------------+------------+-------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+------+
+| GUID                                 | NationalID | Name       | HP   | Attack | Defense | Speed | Height   | Weight | SpecialDef | SpecialAtk | Description                                                                                     | PokemonUID                           | TypeUID                              | GUID                                 | Name |
++--------------------------------------+------------+------------+------+--------+---------+-------+----------+--------+------------+------------+-------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+------+
+| 22d794c8-a4c7-49d7-a2ce-756c6220f2e1 |          4 | Charmander |   39 |     52 |      43 |    65 | 18.7lbs  | 2'00"  |         50 |         60 | Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.   | 22d794c8-a4c7-49d7-a2ce-756c6220f2e1 | fc4c6451-36fd-41ff-a453-a153295d9e28 | fc4c6451-36fd-41ff-a453-a153295d9e28 | Fire |
+| 98315c60-5ea3-4460-a60a-6d6c86bb28f1 |          5 | Charmeleon |   58 |     64 |      58 |    80 | 41.9lbs  | 3'07"  |         65 |         80 | When it swings its burning tail, it elevates the temperature to unbearably high levels.         | 98315c60-5ea3-4460-a60a-6d6c86bb28f1 | fc4c6451-36fd-41ff-a453-a153295d9e28 | fc4c6451-36fd-41ff-a453-a153295d9e28 | Fire |
+| e4b57b20-4560-45de-82dc-9a8e09799c40 |          6 | Charizard  |   78 |     84 |      78 |   100 | 199.5lbs | 5'07"  |         85 |        109 | It spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally. | e4b57b20-4560-45de-82dc-9a8e09799c40 | fc4c6451-36fd-41ff-a453-a153295d9e28 | fc4c6451-36fd-41ff-a453-a153295d9e28 | Fire |
++--------------------------------------+------------+------------+------+--------+---------+-------+----------+--------+------------+------------+-------------------------------------------------------------------------------------------------+--------------------------------------+--------------------------------------+--------------------------------------+------+
+3 rows in set (0.00 sec)
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/GEN_2_WATER_POKEMON.sql
+Empty set (0.00 sec)
+
+QUERY AND RESULTS:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/HEAVIEST_WEIGHT.sql
++----------+----------+
+| Name     | Weight   |
++----------+----------+
+| Venusaur | 220.5lbs |
++----------+----------+
+1 row in set (0.03 sec)
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+TWO JOIN QUERIES:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/FIND_TYPE_ADVANTAGE.sql
+Empty set (0.00 sec)
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/POKEMON_LEARN_EARTHQUAKE.sql
+Empty set (0.00 sec)
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+UNION QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/UNION_HEAVIEST_AND_LEAST_HEAVY.sql
++----------+--------+------+
+| Name     | Weight | UNIT |
++----------+--------+------+
+| Venusaur | 6'07"  | lbs  |
+| Caterpie | 1'00"  | lbs  |
++----------+--------+------+
+2 rows in set (0.02 sec)
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+GROUP BY QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/LAST_POKEMON_BY_TYPE.sql
++-----------+------------+----------+
+| Name      | NationalId | TypeName |
++-----------+------------+----------+
+| Venusaur  |          3 | Grass    |
+| Venusaur  |          3 | Poison   |
+| Charizard |          6 | Fire     |
+| Charizard |          6 | Flying   |
++-----------+------------+----------+
+4 rows in set (0.02 sec)
+
+mysql> 
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+ORDER BY QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/ORDER_BY_NATIONAL_ID.sql
++------------+------------+------------------------------------------------------------------------------------------------------+
+| NationalId | Name       | Description                                                                                          |
++------------+------------+------------------------------------------------------------------------------------------------------+
+|          1 | Bulbasaur  | A strange seed was planted on its back at birth. The plant sprouts and grows with this Pokémon.      |
+|          3 | Venusaur   | The plant blooms when it is asorbing solar energy. It stays on the move to seek sunlight.            |
+|          4 | Charmander | Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.        |
+|          5 | Charmeleon | When it swings its burning tail, it elevates the temperature to unbearably high levels.              |
+|          6 | Charizard  | It spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.      |
+|          7 | Squirtle   | After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.        |
+|          8 | Wartortle  | Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance. |
+|          9 | Blastoise  | A brutal Pokémon with pressurized water jets on its shell. They are used for high speed tackles.     |
+|         10 | Caterpie   | Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.     |
++------------+------------+------------------------------------------------------------------------------------------------------+
+9 rows in set (0.00 sec)
+
+
+***********************************************************************************************************************
+***********************************************************************************************************************
+
+AGGREGATE QUERY:
+
+QUERY AND RESULT:
+
+mysql> source /Users/rileypruitt/Part_4/Queries/AVERAGE_WEIGHT.sql
++-------------------+
+| AVG_WEIGHT        |
++-------------------+
+| 3.111111111111111 |
++-------------------+
+1 row in set, 9 warnings (0.00 sec)
+
+
+
+
+
+
+

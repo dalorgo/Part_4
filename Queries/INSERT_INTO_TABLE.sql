@@ -1,0 +1,3 @@
+INSERT INTO Pokemon(GUID,Name,NationalID,Height,Weight,HP,Attack,Defense,SpecialAtk,SpecialDef,Speed,Description) VALUES('12345678-1234-1234-1234-abc123456789','Treecko',252,'2''04"','11lbs',40,45,35,65,55,70,'Treecko is a small, green, bipedal reptilian Pokémon. It has yellow eyes with long, narrow pupils. Treeckos hands and feet each have three digits covered with tiny spikes');
+
+INSERT INTO Pokemon(GUID,Name,NationalID,Height,Weight,HP,Attack,Defense,SpecialAtk,SpecialDef,Speed,Description) VALUES('87654321-1234-1234-1234-abc123456789','Mudkip',258,'1''04"','16.8lbs',50,70,50,50,50,40,'Mudkip is a small amphibious quadruped Pokémon.');
